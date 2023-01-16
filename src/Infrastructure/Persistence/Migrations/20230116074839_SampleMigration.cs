@@ -57,7 +57,7 @@ namespace CleanArchitecture.Infrastructure.Persistence.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Number = table.Column<int>(type: "integer", nullable: false),
+                    Number = table.Column<string>(type: "character varying(25)", maxLength: 25, nullable: false),
                     Name = table.Column<string>(type: "text", nullable: false),
                     BankUser = table.Column<string>(name: "Bank_User", type: "text", nullable: false),
                     UserId = table.Column<int>(name: "User_Id", type: "integer", nullable: false),

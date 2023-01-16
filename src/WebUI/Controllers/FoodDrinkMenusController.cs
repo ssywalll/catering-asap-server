@@ -29,7 +29,6 @@ namespace WebUI.Controllers
         public async Task<IActionResult> Get(int id)
         {
             var vm = await Mediator.Send(new ExportFoodDrinkMenusQuery {Id = id});
-
             return Ok(vm);
         }
 
@@ -49,7 +48,7 @@ namespace WebUI.Controllers
 
            await Mediator.Send(command);
 
-           return NoContent(); 
+           return Ok(); 
         }
 
         [HttpDelete("{id}")]
@@ -57,7 +56,7 @@ namespace WebUI.Controllers
         {
             await Mediator.Send(new DeleteFoodDrinkMenuCommand(id));
 
-            return NoContent();
+            return Ok();
         }
     }
 }

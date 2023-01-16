@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CleanArchitecture.Application.Carts.Queries.ExportCarts;
 using CleanArchitecture.Application.Tags.Commands.CreateTag;
 using CleanArchitecture.Application.Tags.Commands.DeleteTag;
 using CleanArchitecture.Application.Tags.Commands.UpdateTag;
+using CleanArchitecture.Application.Tags.Queries.ExportTags;
 using CleanArchitecture.Application.Tags.Queries.GetTags;
 using CleanArchitecture.Domain.Entities;
 using CleanArchitecture.WebUI.Controllers;
@@ -19,6 +21,13 @@ namespace WebUI.Controllers
         public async Task<ActionResult<TagsVm>> Get()
         {
             return await Mediator.Send(new GetTagsQuery());
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult> Get(int id)
+        {
+            var vm = await Mediator.Send(new ExportTagsQuery {Id = id});
+            return Ok(vm);
         }
 
         [HttpPost]
@@ -37,7 +46,7 @@ namespace WebUI.Controllers
 
             await Mediator.Send(command);
 
-            return NoContent();
+            return Ok();
         }
 
         [HttpDelete("{id}")]

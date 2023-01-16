@@ -1,18 +1,21 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Threading.Tasks;
 using CleanArchitecture.Application.Common.Mappings;
 using CleanArchitecture.Domain.Entities;
+using System.ComponentModel.DataAnnotations;
+
 
 namespace CleanArchitecture.Application.BankAccounts.Queries.GetBankAccounts
 {
     public class BankAccountDto : IMapFrom<BankAccount>
     {
         public int Id { get; set; }
-        public int Number { get; set; }
+        public string Number { get; set; }= string.Empty;
         public string Name { get; set; } = string.Empty;
-        public string Bank_User { get; set; } = string.Empty;
+         public string Bank_User { get; set; } = string.Empty;
         public int User_Id { get; set; }
     }
 }

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using CleanArchitecture.Application.Common.Interfaces;
 using CleanArchitecture.Domain.Entities;
 using MediatR;
+using AutoMapper;
 
 namespace CleanArchitecture.Application.FoodDrinkOrders.Commands.CreateFoodDrinkOrder
 {
@@ -18,10 +19,12 @@ namespace CleanArchitecture.Application.FoodDrinkOrders.Commands.CreateFoodDrink
     public class CreateFoodDrinkOrderCommandHandler : IRequestHandler<CreateFoodDrinkOrderCommand, FoodDrinkOrder>
     {
         private readonly IApplicationDbContext _context;
+        private readonly IMapper _mapper;
 
-        public CreateFoodDrinkOrderCommandHandler(IApplicationDbContext context)
+        public CreateFoodDrinkOrderCommandHandler(IApplicationDbContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         public async Task<FoodDrinkOrder> Handle(CreateFoodDrinkOrderCommand request, CancellationToken cancellationToken)

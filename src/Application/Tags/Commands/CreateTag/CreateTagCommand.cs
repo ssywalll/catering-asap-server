@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using CleanArchitecture.Application.Common.Interfaces;
 using CleanArchitecture.Domain.Entities;
 using MediatR;
+using AutoMapper;
 
 namespace CleanArchitecture.Application.Tags.Commands.CreateTag
 {
@@ -18,10 +19,13 @@ namespace CleanArchitecture.Application.Tags.Commands.CreateTag
     public class CreateTagCommandHandler : IRequestHandler<CreateTagCommand, Tag>
     {
         private readonly IApplicationDbContext _context;
+        private readonly IMapper _mapper;
+         
 
-        public CreateTagCommandHandler(IApplicationDbContext context)
+        public CreateTagCommandHandler(IApplicationDbContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         public async Task<Tag> Handle(CreateTagCommand request, CancellationToken cancellationToken)

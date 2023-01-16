@@ -1,4 +1,3 @@
-
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using CleanArchitecture.Application.Common.Exceptions;

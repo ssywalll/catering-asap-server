@@ -27,9 +27,10 @@ namespace CleanArchitecture.Application.BankAccounts.Queries.GetBankAccounts
         {
             return new BankAccountsVm
             {
-                BankAccountDtos = await _context.BankAccounts
+                Data = await _context.BankAccounts
                     .AsNoTracking()
                     .ProjectTo<BankAccountDto>(_mapper.ConfigurationProvider)
+                    .OrderBy(t => t.Name)
                     .ToListAsync(cancellationToken)
             };
         }

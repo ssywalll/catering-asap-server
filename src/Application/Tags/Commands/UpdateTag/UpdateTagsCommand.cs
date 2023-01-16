@@ -16,12 +16,12 @@ namespace CleanArchitecture.Application.Tags.Commands.UpdateTag
         public int Food_Drink_Id { get; init; }
     } 
 
-    public class UpdateTagCommandHandler : IRequestHandler<UpdateTagCommand>
+    public class UpdateTagsCommandHandler : IRequestHandler<UpdateTagCommand>
     {
         private readonly IApplicationDbContext _context;
         private readonly IMapper _mapper;
 
-        public UpdateTagCommandHandler(IApplicationDbContext context, IMapper mapper)
+        public UpdateTagsCommandHandler(IApplicationDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

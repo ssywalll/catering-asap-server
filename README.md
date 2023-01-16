@@ -66,6 +66,7 @@ Then, add the following flags to your command (values assume you are executing f
 For example, to add a new migration from the root folder:
 
  `dotnet ef migrations add "SampleMigration" --project src\Infrastructure --startup-project src\WebUI --output-dir Persistence\Migrations`
+ `dotnet ef database update --project src/Infrastructure --startup-project src/WebUI`
 
 ## Overview
 

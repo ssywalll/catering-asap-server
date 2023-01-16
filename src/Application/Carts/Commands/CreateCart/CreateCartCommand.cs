@@ -9,13 +9,13 @@ using AutoMapper;
 
 namespace CleanArchitecture.Application.Carts.Commands.CreateCart
 {
-    public record CreateCartCommand : IRequest<int>
+    public record CreateCartCommand : IRequest<Cart>
     {
         public int User_Id { get; init; }
         public int Food_Drink_Id { get; init; }
         public int Quantity { get; init; }
     }
-    public class CreateCartCommandHandler : IRequestHandler<CreateCartCommand ,int>
+    public class CreateCartCommandHandler : IRequestHandler<CreateCartCommand ,Cart>
     {
         private readonly IApplicationDbContext _context;
         private readonly IMapper _mapper;
@@ -26,17 +26,18 @@ namespace CleanArchitecture.Application.Carts.Commands.CreateCart
             _mapper = mapper;
         }
 
-        public async Task<int> Handle(CreateCartCommand request, CancellationToken cancellationToken)
+        public async Task<Cart> Handle(CreateCartCommand request, CancellationToken cancellationToken)
         {
            var entity = new Cart();
 
-           entity.User_Id = request.User_Id; 
+           entity.User_Id = request.User_Id;
+           entity.Food_Drink_Id = request.Food_Drink_Id;
+           entity.Quantity = request.Quantity;
 
            _context.Carts.Add(entity);
-
            await _context.SaveChangesAsync(cancellationToken);
 
-           return entity.User_Id;
+           return entity;
         }
     }
 }
