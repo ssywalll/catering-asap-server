@@ -15,7 +15,6 @@ namespace CleanArchitecture.Application.FoodDrinkMenus.Queries.GetFoodDrinkMenus
 {
     public record GetFoodDrinkMenuWithPagination : IRequest<PaginatedList<FoodDrinkMenuDto>>
     {
-        // public string Name { get; init; } = string.Empty;
         public int PageNumber { get; init; } = 1;
         public int PageSize { get; init; } = 10;
     }
@@ -34,7 +33,7 @@ namespace CleanArchitecture.Application.FoodDrinkMenus.Queries.GetFoodDrinkMenus
         public async Task<PaginatedList<FoodDrinkMenuDto>> Handle(GetFoodDrinkMenuWithPagination request, CancellationToken cancellationToken)
         {
              return await _context.FoodDrinkMenus
-                // .Where(x => x.Name == request.Name)
+                // .Where(x => x.Name.ToLower().Contains(request.Name))
                 .OrderBy(x => x.Name)
                 .ProjectTo<FoodDrinkMenuDto>(_mapper.ConfigurationProvider)
                 .PaginatedListAsync(request.PageNumber, request.PageSize);

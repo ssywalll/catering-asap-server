@@ -55,13 +55,16 @@ namespace CleanArchitecture.Application.Users.Commands.Login
                 throw new NotFoundException();
             }
 
-            //Generate Token
+            // Generate Token
             var tokenHandler = new JwtSecurityTokenHandler();
             var tokenKey = Encoding.UTF8.GetBytes(_jwtSettings.securitykey);
             var tokendesc = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(
-                    new Claim[] { new Claim(ClaimTypes.Name, entity.Email) }
+                    new Claim[] 
+                    { 
+                        new Claim(ClaimTypes.Name, entity.Email)
+                    }
                 ),
                 Expires = DateTime.Now.AddMinutes(30),
                 SigningCredentials = new SigningCredentials( new SymmetricSecurityKey(tokenKey), SecurityAlgorithms.HmacSha256Signature)
@@ -80,6 +83,8 @@ namespace CleanArchitecture.Application.Users.Commands.Login
                     .ProjectTo<LoginDto>(_mapper.ConfigurationProvider)
                     .SingleOrDefaultAsync(cancellationToken)
             };
+
+            
         }
     }
 }

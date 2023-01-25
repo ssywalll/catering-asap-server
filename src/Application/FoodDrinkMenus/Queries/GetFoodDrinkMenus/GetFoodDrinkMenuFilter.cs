@@ -34,8 +34,6 @@ namespace CleanArchitecture.Application.FoodDrinkMenus.Queries.GetFoodDrinkMenus
             {
                 Status = "Ok",
                 Data = await _context.FoodDrinkMenus
-                    // .Include(x => x.Name == request.Name)
-                    // .Where(x => x.Name == request.Name)
                     .Where(x => x.Name.ToLower().Contains(request.Name))
                     .OrderBy(t => t.Price)
                     .ProjectTo<FoodDrinkMenuDto>(_mapper.ConfigurationProvider)

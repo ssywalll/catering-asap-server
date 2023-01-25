@@ -48,6 +48,8 @@ builder.Services.AddAuthentication(item =>{
     };
 });
 
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -79,6 +81,7 @@ app.UseSwaggerUi3(settings =>
     settings.Path = "/api";
     // settings.DocumentPath = "/api/specification.json";
 });
+
 
 app.UseCors(MyAllowSpecificOrigins);
 app.UseRouting();

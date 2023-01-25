@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using CleanArchitecture.Application.Common.Interfaces;
+using CleanArchitecture.Application.Users.Commands.Login;
 using CleanArchitecture.Application.Users.Queries.GetUsers;
 using MediatR;
 using Microsoft.EntityFrameworkCore;

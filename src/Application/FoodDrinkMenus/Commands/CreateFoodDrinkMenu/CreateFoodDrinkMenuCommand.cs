@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CleanArchitecture.Application.Common.Interfaces;
-using CleanArchitecture.Application.FoodDrinkMenus.Queries.GetFoodDrinkMenus;
 using CleanArchitecture.Domain.Entities;
-using CleanArchitecture.Domain.Enums;
 using MediatR;
 
 namespace CleanArchitecture.Application.FoodDrinkMenus.Commands.CreateFoodDrinkMenu

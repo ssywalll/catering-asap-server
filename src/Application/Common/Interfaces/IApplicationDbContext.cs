@@ -1,4 +1,5 @@
-﻿using CleanArchitecture.Domain.Entities;
+﻿using CleanArchitecture.Application.Users.Commands.Login;
+using CleanArchitecture.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace CleanArchitecture.Application.Common.Interfaces;
@@ -28,6 +29,7 @@ public interface IApplicationDbContext
     DbSet<Role> Roles { get; }
 
     DbSet<Tag> Tags { get; }
+    // DbSet<UsersDto> UsersDto { get; }
 
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }
