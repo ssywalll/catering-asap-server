@@ -312,6 +312,7 @@ namespace CleanArchitecture.Infrastructure.Persistence.Migrations
                     Phone = table.Column<int>(type: "integer", nullable: false),
                     Gender = table.Column<int>(type: "integer", nullable: false),
                     PictureUrl = table.Column<string>(name: "Picture_Url", type: "text", nullable: false),
+                    Role = table.Column<string>(type: "text", nullable: false),
                     Created = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     CreatedBy = table.Column<string>(type: "text", nullable: true),
                     LastModified = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),

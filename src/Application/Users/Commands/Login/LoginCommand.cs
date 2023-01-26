@@ -63,7 +63,9 @@ namespace CleanArchitecture.Application.Users.Commands.Login
                 Subject = new ClaimsIdentity(
                     new Claim[] 
                     { 
-                        new Claim(ClaimTypes.Name, entity.Email)
+                        new Claim("id", entity.Id.ToString()),
+                        new Claim(ClaimTypes.Name, entity.Email),
+                        new Claim(ClaimTypes.Role, entity.Role)
                     }
                 ),
                 Expires = DateTime.Now.AddMinutes(30),

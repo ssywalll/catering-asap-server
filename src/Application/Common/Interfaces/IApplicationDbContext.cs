@@ -29,7 +29,6 @@ public interface IApplicationDbContext
     DbSet<Role> Roles { get; }
 
     DbSet<Tag> Tags { get; }
-    // DbSet<UsersDto> UsersDto { get; }
 
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }
