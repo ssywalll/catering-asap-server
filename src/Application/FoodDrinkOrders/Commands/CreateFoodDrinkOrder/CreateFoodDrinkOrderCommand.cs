@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using CleanArchitecture.Application.Common.Interfaces;
 using CleanArchitecture.Domain.Entities;
 using MediatR;
@@ -11,8 +7,8 @@ namespace CleanArchitecture.Application.FoodDrinkOrders.Commands.CreateFoodDrink
     public record CreateFoodDrinkOrderCommand : IRequest<FoodDrinkOrder>
     {
         public int Food_Drink_Id { get; init; }
-        public int Order_Number { get; init; }
-    } 
+        public int Order_Id { get; init; }
+    }
 
     public class CreateFoodDrinkOrderCommandHandler : IRequestHandler<CreateFoodDrinkOrderCommand, FoodDrinkOrder>
     {
@@ -28,7 +24,7 @@ namespace CleanArchitecture.Application.FoodDrinkOrders.Commands.CreateFoodDrink
             var entity = new FoodDrinkOrder
             {
                 Food_Drink_Id = request.Food_Drink_Id,
-                Order_Number = request.Order_Number 
+                Order_Id = request.Order_Id
             };
 
             _context.FoodDrinkOrders.Add(entity);
